@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Họp Trực Tuyến</title>
+    <!-- Tải Jitsi API -->
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+        #meet-container { 
+            width: 100%; 
+            height: 100vh; 
+        }
+    </style>
+</head>
+<body>
+    <div id="meet-container"></div>
+
+    <script>
+        // Tên miền của máy chủ Jitsi miễn phí
+        const domain = 'meet.jit.si';
+        
+        // Cấu hình phòng họp
+        const options = {
+            roomName: 'PhongHopTrucTuyen', // Đổi tên này để tạo phòng riêng của bạn
+            width: '100%',
+            height: '100%',
+            parentNode: document.querySelector('#meet-container'),
+            configOverwrite: { 
+                startWithAudioMuted: true, // Tắt mic khi mới vào
+                startWithVideoMuted: false // Mở cam khi mới vào
+            },
+            interfaceConfigOverwrite: {
+                SHOW_JITSI_WATERMARK: false
+            }
+        };
+        
+        // Khởi tạo phòng họp
+        const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+</body>
+</html>
